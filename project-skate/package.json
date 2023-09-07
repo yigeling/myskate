@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "qiniu-js": "^3.4.1",
+    "vue-core-video-player": "^0.2.0",
+    "vue-video-player": "^6.0.0"
+  }
+}
