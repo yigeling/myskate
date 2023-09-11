@@ -17,7 +17,6 @@ import { ImagePreview } from 'vant';
 import { Lazyload } from 'vant';
 // 基于App.vue(根组件)创建一个vue实例
 const app = createApp(App)
-
 // app.use(Cell);
 // app.use(CellGroup);
 nutUiComponents.forEach((item)=>{
@@ -29,6 +28,7 @@ app.use(store)
 
 app.use(ImagePreview);
 
+// app.use(Toast);
 
 // 把vue实例挂载到index.html => #app
 app.mount('#app')

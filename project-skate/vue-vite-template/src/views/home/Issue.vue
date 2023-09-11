@@ -35,7 +35,6 @@
 	import 'vant/es/toast/style';
 	import { Toast } from 'vant';
 	
-	import * as qiniu from 'qiniu-js'
 	
 	const userStore = useUsersStore();
 	const onClickLeft = () => history.back();

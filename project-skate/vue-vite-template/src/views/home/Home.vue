@@ -12,18 +12,18 @@
 		<!-- 发现页面 -->
 		<van-tab title="发现">
 			<van-pull-refresh v-model="isLoading" success-text="刷新成功" @refresh="onRefresh">
-				<nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="3000">
+				<nut-swiper :init-page="page" :pagination-visible="true" pagination-color="#426543" auto-play="3000" width="">
 					<nut-swiper-item>
-						<img src="../../../public/img/home4.jpg" alt="" />
+						<img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.xp_qCozZS2HyFGIXkG14yQHaE7?pid=ImgDet&rs=1" alt="" />
 					</nut-swiper-item>
 					<nut-swiper-item>
-						<img src="../../../public/img/home2.jpg" alt="" />
+						<img src="https://pic1.zhimg.com/v2-5e2b88c4c09ca65071ff824ba88b8fb6_r.jpg?source=1940ef5c" alt="" />
 					</nut-swiper-item>
 					<nut-swiper-item>
 						<img src="../../../public/img/home3.jpg" alt="" />
 					</nut-swiper-item>
 					<nut-swiper-item>
-						<img src="../../../public/img/home1.jpg" alt="" />
+						<img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.iNNqmKJ9JJGWyrhUv_hofQHaE8?pid=ImgDet&rs=1" alt="" />
 					</nut-swiper-item>
 				</nut-swiper>
 
@@ -34,8 +34,8 @@
 						<van-col span="4">
 							<van-image round width="3rem" height="3rem" :src=n.head />
 						</van-col>
-						<van-col span="4">{{n.username}}</van-col>
-						<van-col span="4" offset="12">
+						<van-col span="8">{{n.username}}</van-col>
+						<van-col span="4" offset="8">
 							<van-icon name="plus" @click="Follow" color="#1989fa" />关注
 						</van-col>
 					</van-row>
@@ -43,7 +43,7 @@
 						<van-col span="10" offset="4">{{n.add_time}}</van-col>
 					</van-row>
 					<!-- <p>{{n.content}}</p> -->
-					<van-text-ellipsis :content=n.content expand-text="展开" collapse-text="收起" />
+					<van-text-ellipsis :content=n.content expand-text="展开" collapse-text="收起" style="margin-top: 3px;"/>
 
 
 					<div>
@@ -106,6 +106,7 @@
 	import {
 		useUsersStore
 	} from '@/store/user'
+import { Toast } from '@nutui/nutui';
 	const userStore = useUsersStore();
 	import {
 		ref
@@ -123,6 +124,7 @@
 		showImagePreview,
 		showToast
 	} from 'vant';
+	import {showFailToast,showSuccessToast} from 'vant'
 	import {
 		ImagePreview
 	} from "vant"
@@ -134,6 +136,7 @@
 		computed
 	} from 'vue';
 	import router from "@/router";
+
 	//声明父组件支持的自定义事件
 	const $emit = defineEmits(["change"])
 
@@ -213,14 +216,12 @@
 
 	function Tags(userlike_id) {
 		const id = userlike_id
-		console.log(id)
+		// console.log(id)
 		userLike(id)
 		.then(res =>{
 			if (res.code != 0){
-				// showFailToast({
-				// 	position: 'top',
-				// });
 				console.log("fail")
+				router.push('/login') 
 			}else{
 				console.log(res.data)
 				console.log("点赞了这条动态")
